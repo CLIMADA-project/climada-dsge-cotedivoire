@@ -9,9 +9,8 @@
 ## What this does
 
 This package extends [CLIMADA](https://github.com/CLIMADA-project/climada_python) beyond its native scope by converting physical climate damages into macroeconomic shocks:
-CLIMADA Hazard -> Omega_t (climate productivity) -> DSGE -> macro multiplier -> adaptation NPV
 
-text
+    CLIMADA Hazard -> Omega_t (climate productivity) -> DSGE -> macro multiplier -> adaptation NPV
 
 It is **complementary** to `climada_python` (Core) and `climada_petals` (sectoral modules): it **consumes** their outputs and **adds** four analytical layers absent from the official ecosystem:
 
@@ -25,47 +24,50 @@ It is **complementary** to `climada_python` (Core) and `climada_petals` (sectora
 
 ## Installation
 
-```bash
-pip install git+https://github.com/zagbo-dayory/climada-dsge-cotedivoire.git
-Requires climada>=4.0, pydsge>=0.4, numpy, pandas, scipy, Python >=3.10.
+    pip install git+https://github.com/Donatien123-a11y/climada-dsge-cotedivoire.git
 
-Quickstart
-bash
-# 1) Smoke test (no external data required - generates everything)
-python climada_dsge.py --smoke-test
+Requires `climada>=4.0`, `pydsge>=0.4`, `numpy`, `pandas`, `scipy`, Python >=3.10.
 
-# 2) Full pipeline
-python climada_dsge.py --full
+## Quickstart
 
-# 3) Export Dynare (.mod + JSON posterior)
-python climada_dsge.py --export-dynare-json
+    # 1) Smoke test (no external data required - generates everything)
+    python climada_dsge.py --smoke-test
+
+    # 2) Full pipeline
+    python climada_dsge.py --full
+
+    # 3) Export Dynare (.mod + JSON posterior)
+    python climada_dsge.py --export-dynare-json
+
 Or in Python:
 
-python
-from climada_dsge import ZagboPipeline
+    from climada_dsge import ZagboPipeline
 
-pipeline = ZagboPipeline(data_dir="data", output_dir="outputs", seed=42)
-pipeline.run()
-pipeline.export_tables()
-Documentation
-Paper: MPRA 128349
+    pipeline = ZagboPipeline(data_dir="data", output_dir="outputs", seed=42)
+    pipeline.run()
+    pipeline.export_tables()
 
-Dynare model: generated at outputs/climada_dsge_civ.mod
+## Documentation
 
-Replication notes: see Replication Note M2 in the paper for the Python-vs-Dynare multiplier discrepancy.
+- **Paper**: [MPRA 128349](https://mpra.ub.uni-muenchen.de/128349/)
+- **Dynare model**: generated at `outputs/climada_dsge_civ.mod`
+- **Replication notes**: see `Replication Note M2` in the paper for the Python-vs-Dynare multiplier discrepancy.
 
-Data availability
-Institutional data (DPPSE, DGBF, SODEXAM, BNETD) are available on request per data-sharing agreements. Synthetic data calibrated to published posterior moments are generated automatically by generate_synthetic_data() for CI and smoke tests.
+## Data availability
 
-Citation
-bibtex
-@techreport{zagbo2025climada,
-  title  = {Climate Risk and Macroeconomic Vulnerability in Cote d'Ivoire},
-  author = {Zagbo, D. D. D.},
-  year   = {2025},
-  number = {128349},
-  institution = {MPRA},
-  url    = {https://mpra.ub.uni-muenchen.de/128349/}
-}
-License
-Apache 2.0 - see LICENSE.
+Institutional data (DPPSE, DGBF, SODEXAM, BNETD) are available on request per data-sharing agreements. **Synthetic data calibrated to published posterior moments** are generated automatically by `generate_synthetic_data()` for CI and smoke tests.
+
+## Citation
+
+    @techreport{zagbo2025climada,
+      title  = {Climate Risk and Macroeconomic Vulnerability in Cote d'Ivoire},
+      author = {Zagbo, D. D. D.},
+      year   = {2025},
+      number = {128349},
+      institution = {MPRA},
+      url    = {https://mpra.ub.uni-muenchen.de/128349/}
+    }
+
+## License
+
+Apache 2.0 - see [LICENSE]
